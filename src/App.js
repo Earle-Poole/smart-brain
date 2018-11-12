@@ -8,8 +8,11 @@ import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import Particles from 'react-particles-js';
 import './App.css';
+import Clarifai from 'clarifai';
 
-
+const app = new Clarifai.App({
+  apiKey: 'a071956ee8854fe2b62e11dd64ff038c'
+});
 
 const particlesOptions = {
   particles: {
@@ -54,8 +57,16 @@ class App extends Component {
     }})
   }
 
-   calculateFaceLocation(data) {
-    let clarifaiFace = data.outputs.data.regions[0].region_info.bounding_box;
+   calculateFaceLocation = (data) => {
+    const test = app.models
+      .predict("a071956ee8854fe2b62e11dd64ff038c", "https://img.freepik.com/free-photo/worldface-american-man-in-a-white-background_53876-31195.jpg?size=338&ext=jpg")
+      .then(function(response){
+        console.log(response)
+      }, 
+      function(err){
+        console.log(err)
+      });
+    const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
     const image = document.getElementById('inputimage');
     const width = Number(image.width)
     const height = Number(image.height)
@@ -64,6 +75,7 @@ class App extends Component {
       topRow: clarifaiFace.top_row * height,
       rightCol: width - (clarifaiFace.right_col * width),
       bottomRow: height - (clarifaiFace.bottom_row * height),
+      test
     }
   }
 
