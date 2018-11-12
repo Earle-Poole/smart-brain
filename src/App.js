@@ -54,7 +54,7 @@ class App extends Component {
     }})
   }
 
-   calculateFaceLocation = (data) => {
+   calculateFaceLocation(data) {
     let clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
     const image = document.getElementById('inputimage');
     const width = Number(image.width)
