@@ -8,11 +8,8 @@ import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import Particles from 'react-particles-js';
 import './App.css';
-import Clarifai from 'clarifai';
 
-const app = new Clarifai.App({
-  apiKey: 'a071956ee8854fe2b62e11dd64ff038c'
-});
+
 
 const particlesOptions = {
   particles: {
@@ -57,25 +54,16 @@ class App extends Component {
     }})
   }
 
-   calculateFaceLocation = (data) => {
-    const test = app.models
-      .predict("a403429f2ddf4b49b307e318f00e528b", "https://img.freepik.com/free-photo/worldface-american-man-in-a-white-background_53876-31195.jpg?size=338&ext=jpg")
-      .then(function(response){
-        console.log(response)
-      }, 
-      function(err){
-        console.log(err)
-      });
+  calculateFaceLocation = (data) => {
     const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
     const image = document.getElementById('inputimage');
     const width = Number(image.width)
     const height = Number(image.height)
     return {
-      leftCol: clarifaiFace.left_col * width,
-      topRow: clarifaiFace.top_row * height,
-      rightCol: width - (clarifaiFace.right_col * width),
-      bottomRow: height - (clarifaiFace.bottom_row * height),
-      test
+      leftCol: clarifaiFace.leftCol * width,
+      topRow: clarifaiFace.topRow * height,
+      rightCol: width - (clarifaiFace.rightCol * width),
+      bottomRow: height - (clarifaiFace.bottomRow * height),
     }
   }
 
@@ -93,7 +81,7 @@ class App extends Component {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
-            id: this.state.input
+            input: this.state.input
         })
       })
       .then(response => response.json())
@@ -111,8 +99,8 @@ class App extends Component {
               this.setState(Object.assign(this.state.user, { entries: count }))
             })
             .catch(console.log)
-        }
         this.displayFaceBox(this.calculateFaceLocation(response))
+        }
       })
       .catch(err => console.log(err));
   }
