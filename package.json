@@ -2,7 +2,8 @@
   "name": "facerecognitionbrain",
   "version": "0.1.0",
   "engines": {
-    "node": "10.9.0"
+    "node": "10.9.0",
+    "npm": "6.4.1"
   },
   "private": true,
   "homepage": "https://earle-poole.github.io/facerecognitionbrain",
