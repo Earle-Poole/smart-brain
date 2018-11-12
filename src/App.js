@@ -59,7 +59,7 @@ class App extends Component {
 
    calculateFaceLocation = (data) => {
     const test = app.models
-      .predict("a071956ee8854fe2b62e11dd64ff038c", "https://img.freepik.com/free-photo/worldface-american-man-in-a-white-background_53876-31195.jpg?size=338&ext=jpg")
+      .predict("a403429f2ddf4b49b307e318f00e528b", "https://img.freepik.com/free-photo/worldface-american-man-in-a-white-background_53876-31195.jpg?size=338&ext=jpg")
       .then(function(response){
         console.log(response)
       }, 
