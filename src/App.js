@@ -76,7 +76,10 @@ class App extends Component {
   }
 
   onButtonSubmit = () => {
-    this.setState({imageUrl: this.state.input});
+    this.setState({
+      imageUrl: this.state.input,
+      box: {}
+    });
       fetch('https://stormy-peak-63661.herokuapp.com/imageurl', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
