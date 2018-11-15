@@ -5,9 +5,9 @@ import './Logo.css';
 
 const Logo = () => {
 	return (
-		<div className='ma5 mt0'>
-			<Tilt className="Tilt br5 ma4 ml4 shadow-2" options={{ max : 55 }} style={{ height: 285, width: 400 }} >
- 				<div className="Tilt-inner" style={{display: 'flex'}}>
+		<div>
+			<Tilt className="Tilt center ma0 mt4 mb5 shadow-2" options={{ max : 55 }} style={{ height: 285, width: 400 }} >
+ 				<div className="Tilt-inner">
  					<img alt='logo' src={think}/>
  				</div>
 			</Tilt>

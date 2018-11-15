@@ -9,7 +9,14 @@ import Rank from './components/Rank/Rank';
 import Particles from 'react-particles-js';
 import './App.css';
 
-
+/* TO DO LIST
+***Add additional APIs and the selecting drop-down box
+  -Different handlings of outputs from different API calls
+***Make the rank counter only increment upon finding a face
+***Have the facerecognition component iterate over multiple faces
+  being given back from Clarifai API
+***Add Social Media and contact information
+*/
 
 const particlesOptions = {
   particles: {
