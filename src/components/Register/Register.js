@@ -40,36 +40,39 @@ class Register extends React.Component {
 
     render() {
         return (
-            <article className="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
-                <main className="pa4 black-80">
+            <article className="br3 ba mv4 w-100 w-50-m w-25-l mw6 shadow-5 center" style={{color: '#cacaca'}}>
+                <main className="pa4">
                     <div className="measure">
                         <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                        <legend className="f2 fw6 ph0 mh0 center">Register</legend>
+                        <legend className="f1 fw6 ph0 mh0 center" style={{color: '#cacaca'}}>Register</legend>
                         <div className="mt3">
-                            <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
+                            <label className="db lh-copy f4" style={{color: '#cacaca'}} htmlFor="name">Name</label>
                             <input 
-                            className="pa2 input-reset b--black-10 ba bg-transparent hover-bg-black hover-white w-100" 
+                            className="pa2 br3 input-reset ba bg-transparent hover-white w-100" 
                             type="text" 
+                            style={{borderColor: '#cacaca'}}
                             name="name"  
                             id="name" 
                             onChange={this.onNameChange}
                             />
                         </div>
                         <div className="mt3">
-                            <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
+                            <label className="db lh-copy f4" style={{color: '#cacaca'}} htmlFor="email-address">Email</label>
                             <input 
-                            className="pa2 input-reset b--black-10 ba bg-transparent hover-bg-black hover-white w-100" 
+                            className="pa2 br3 input-reset ba bg-transparent hover-white w-100" 
                             type="email" 
+                            style={{borderColor: '#cacaca'}}
                             name="email-address"  
                             id="email-address" 
                             onChange={this.onEmailChange}
                             />
                         </div>
                         <div className="mv3">
-                            <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
+                            <label className="db lh-copy f4" style={{color: '#cacaca'}} htmlFor="password">Password</label>
                             <input 
-                            className="b pa2 input-reset b--black-10 ba bg-transparent hover-bg-black hover-white w-100" 
+                            className="b br3 pa2 input-reset ba bg-transparent hover-white w-100" 
                             type="password" 
+                            style={{borderColor: '#cacaca'}}
                             name="password"  
                             id="password" 
                             onChange={this.onPasswordChange}
@@ -79,7 +82,8 @@ class Register extends React.Component {
                         <div className="">
                         <input 
                             onClick={this.onSubmitSignIn}
-                            className="b pointer ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
+                            className="b br3 pointer ph3 pv2 input-reset ba bg-transparent grow pointer f5 dib" 
+                            style={{color: '#cacaca', borderColor: '#cacaca'}}
                             type="submit" 
                             value="Register"
                             />

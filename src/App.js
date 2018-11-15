@@ -16,6 +16,8 @@ import './App.css';
 ***Have the facerecognition component iterate over multiple faces
   being given back from Clarifai API
 ***Add Social Media and contact information
+***Make page scroll down when detect button pressed
+***Change register component font colors
 */
 
 const particlesOptions = {

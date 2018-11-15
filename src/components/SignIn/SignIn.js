@@ -46,7 +46,7 @@ class SignIn extends React.Component {
                         <div className="mt3">
                             <label className="db lh-copy f4" htmlFor="email-address">Email</label>
                             <input 
-                                className="pa2 input-reset ba bg-transparent hover-white w-100" 
+                                className="pa2 br3 input-reset ba bg-transparent hover-white w-100" 
                                 type="email" 
                                 style={{borderColor: '#cacaca'}}
                                 name="email-address"  
@@ -57,7 +57,7 @@ class SignIn extends React.Component {
                         <div className="mv3">
                             <label className="db lh-copy f4" htmlFor="password">Password</label>
                             <input 
-                                className="pa2 input-reset ba bg-transparent hover-white w-100" 
+                                className="pa2 br3 input-reset ba bg-transparent hover-white w-100" 
                                 type="password" 
                                 style={{borderColor: '#cacaca'}}
                                 name="password"  
@@ -69,7 +69,7 @@ class SignIn extends React.Component {
                         <div className="">
                         <input 
                             onClick={this.onSubmitSignIn}
-                            className="ph3 pv2 input-reset ba bg-transparent grow pointer f4 dib"
+                            className="ph3 br3 pv2 input-reset ba bg-transparent grow pointer f4 dib"
                             style={{color: '#cacaca', borderColor: '#cacaca'}}
                             type="submit" 
                             value="Sign in"
