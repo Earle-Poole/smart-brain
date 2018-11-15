@@ -13,11 +13,31 @@ import './App.css';
 
 const particlesOptions = {
   particles: {
+    color:{
+      value: "#cacaca"
+    },
     number:{
-      value: 80,
+      value: 40,
       density: {
         enable: true,
-        value_area:800,
+        value_area:500,
+      }
+    },
+    size: {
+      value: 2.5
+    },
+    line_linked: {
+      enable: true,
+      opacity: 0.3,
+      color: "#acacac"
+    }
+  },
+  interactivity: {
+    detect_on: "window",
+    events: {
+      onhover: {
+        enable: true,
+        mode: "repulse"
       }
     }
   }
@@ -41,7 +61,7 @@ const initialState = {
 class App extends Component {
   constructor() {
     super();
-    this.state = initialState
+    this.state = initialState;
   }
 
   loadUser = (data) => {

@@ -5,11 +5,13 @@ const Rank = ({name, entries}) => {
 	return (
 		<div>
 			<div className='white f3'>
-			{`${name}, your current entry count is...`}
+			{`Hello, ${name}, I am keeping track of how many faces you've had identified. You're at`}
 			</div>
+			<br/><br/>
 			<div className='white f1'>
-			{entries}
+			{`${entries}!`}
 			</div>
+			<br/>
 		</div>
 	);
 }
