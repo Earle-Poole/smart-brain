@@ -6,6 +6,7 @@ import SignIn from './components/SignIn/SignIn';
 import Register from './components/Register/Register';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
+import SocialMediaTags from './components/SocialMediaTags/SocialMediaTags';
 import Particles from 'react-particles-js';
 import './App.css';
 
@@ -33,7 +34,7 @@ const particlesOptions = {
       }
     },
     size: {
-      value: 2.5
+      value: 0.75
     },
     line_linked: {
       enable: true,
@@ -80,7 +81,8 @@ const initialState = {
     email: '',
     entries: 0,
     joined: ''      
-  }
+  },
+  componentColors: '#cacaca'
 }
 
 class App extends Component {
@@ -164,7 +166,7 @@ class App extends Component {
   }
 
   render() {
-    const { isSignedIn, imageUrl, route, box } = this.state;
+    const { isSignedIn, imageUrl, route, box, componentColors } = this.state;
     return (
       <div className="App">
         <Particles className='particles'
@@ -172,22 +174,36 @@ class App extends Component {
         />
         <Navigation 
           isSignedIn={isSignedIn} 
-          onRouteChange={this.onRouteChange}/>
+          onRouteChange={this.onRouteChange}
+          componentColors={componentColors}
+          />
         { route === 'home' 
           ? <div>
           <Logo />
-          <Rank name={this.state.user.name} entries={this.state.user.entries}/>
+          <Rank 
+          componentColors={componentColors}
+          name={this.state.user.name} 
+          entries={this.state.user.entries}
+          />
           <ImageLinkForm 
           onInputChange={this.onInputChange} 
-          onButtonSubmit={this.onButtonSubmit}/>
+          onButtonSubmit={this.onButtonSubmit}
+          componentColors={componentColors}
+          />
           <FaceRecognition box={box} imageUrl={imageUrl} />
+          {/* <SocialMediaTags componentColors={componentColors} /> */}
         </div>
           : (
             route === 'signin' 
             ? <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-            : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+            : <Register 
+            loadUser={this.loadUser} 
+            onRouteChange={this.onRouteChange}
+            componentColors={componentColors}
+            />
           )
     }
+      <SocialMediaTags componentColors={componentColors} />
       </div>
     );
   }

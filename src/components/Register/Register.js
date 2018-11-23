@@ -40,7 +40,7 @@ class Register extends React.Component {
 
     render() {
         return (
-            <article className="br3 ba mv4 w-100 w-50-m w-25-l mw6 shadow-5 center" style={{color: '#cacaca'}}>
+            <article className="br3 ba mv4 w-100 w-50-m w-25-l mw6 shadow-5 center" style={{color: this.props.componentColors}}>
                 <main className="pa4">
                     <div className="measure">
                         <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
