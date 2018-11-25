@@ -16,7 +16,7 @@ import './App.css';
 ***Make the rank counter only increment upon finding a face
 ***Have the facerecognition component iterate over multiple faces
   being given back from Clarifai API
-***Add Social Media and contact information
+DONE ***Add Social Media and contact information DONE
 ***Make page scroll down when detect button pressed
 ***Change register component font colors
 */
@@ -27,7 +27,7 @@ const particlesOptions = {
       value: "#cacaca"
     },
     number:{
-      value: 40,
+      value: 80,
       density: {
         enable: true,
         value_area:500,
