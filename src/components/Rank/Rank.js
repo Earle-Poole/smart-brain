@@ -1,9 +1,9 @@
 import React from 'react';
 
 
-const Rank = ({name, entries, componentColors}) => {
+const Rank = ({name, entries}) => {
 	return (
-		<div style={{color: componentColors}}>
+		<div className='moon-gray'>
 			<div className='f3'>
 			{`Hello, ${name}, I am keeping track of how many faces you've had identified. You're at`}
 			</div>

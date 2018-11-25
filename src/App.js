@@ -34,11 +34,11 @@ const particlesOptions = {
       }
     },
     size: {
-      value: 0.75
+      value: 0.5
     },
     line_linked: {
       enable: true,
-      opacity: 0.3,
+      opacity: 0.5,
       color: "#acacac"
     }
   },
@@ -58,12 +58,12 @@ const particlesOptions = {
       bubble: {
         distance: 250,
         duration: 2,
-        size: 0,
+        size: 1,
         opacity: 0,
       },
       repulse: {
-        distance: 400,
-        duration: 4
+        distance: 200,
+        duration: 1
       }
     }
   }
@@ -73,7 +73,7 @@ const initialState = {
   input: '',
   imageUrl: '',
   box: {},
-  route: 'signin',
+  route: 'home',
   isSignedIn: false,
   user: {
     id: '',
@@ -166,7 +166,7 @@ class App extends Component {
   }
 
   render() {
-    const { isSignedIn, imageUrl, route, box, componentColors } = this.state;
+    const { isSignedIn, imageUrl, route, box} = this.state;
     return (
       <div className="App">
         <Particles className='particles'
@@ -175,20 +175,17 @@ class App extends Component {
         <Navigation 
           isSignedIn={isSignedIn} 
           onRouteChange={this.onRouteChange}
-          componentColors={componentColors}
           />
         { route === 'home' 
           ? <div>
           <Logo />
           <Rank 
-          componentColors={componentColors}
           name={this.state.user.name} 
           entries={this.state.user.entries}
           />
           <ImageLinkForm 
           onInputChange={this.onInputChange} 
           onButtonSubmit={this.onButtonSubmit}
-          componentColors={componentColors}
           />
           <FaceRecognition box={box} imageUrl={imageUrl} />
           {/* <SocialMediaTags componentColors={componentColors} /> */}
@@ -199,11 +196,10 @@ class App extends Component {
             : <Register 
             loadUser={this.loadUser} 
             onRouteChange={this.onRouteChange}
-            componentColors={componentColors}
             />
           )
     }
-      <SocialMediaTags componentColors={componentColors} />
+      <SocialMediaTags />
       </div>
     );
   }

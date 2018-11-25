@@ -40,53 +40,49 @@ class Register extends React.Component {
 
     render() {
         return (
-            <article className="br3 ba mv4 w-100 w-50-m w-25-l mw6 shadow-5 center" style={{color: this.props.componentColors}}>
+            <article className="br3 ba mv4 w-100 w-50-m w-25-l mw6 shadow-5 center moon-gray b--moon-gray">
                 <main className="pa4">
                     <div className="measure">
                         <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                        <legend className="f1 fw6 ph0 mh0 center" style={{color: '#cacaca'}}>Register</legend>
-                        <div className="mt3">
-                            <label className="db lh-copy f4" style={{color: '#cacaca'}} htmlFor="name">Name</label>
-                            <input 
-                            className="pa2 br3 input-reset ba bg-transparent hover-white w-100" 
-                            type="text" 
-                            style={{borderColor: '#cacaca'}}
-                            name="name"  
-                            id="name" 
-                            onChange={this.onNameChange}
-                            />
-                        </div>
-                        <div className="mt3">
-                            <label className="db lh-copy f4" style={{color: '#cacaca'}} htmlFor="email-address">Email</label>
-                            <input 
-                            className="pa2 br3 input-reset ba bg-transparent hover-white w-100" 
-                            type="email" 
-                            style={{borderColor: '#cacaca'}}
-                            name="email-address"  
-                            id="email-address" 
-                            onChange={this.onEmailChange}
-                            />
-                        </div>
-                        <div className="mv3">
-                            <label className="db lh-copy f4" style={{color: '#cacaca'}} htmlFor="password">Password</label>
-                            <input 
-                            className="b br3 pa2 input-reset ba bg-transparent hover-white w-100" 
-                            type="password" 
-                            style={{borderColor: '#cacaca'}}
-                            name="password"  
-                            id="password" 
-                            onChange={this.onPasswordChange}
-                            />
-                        </div>
+                            <legend className="f1 fw6 ph0 mh0 center">Register</legend>
+                            <div className="mt3">
+                                <label className="db lh-copy f4" htmlFor="name">Name</label>
+                                <input 
+                                className="pa2 br3 input-reset ba bg-transparent hover-white w-100" 
+                                type="text" 
+                                name="name"  
+                                id="name" 
+                                onChange={this.onNameChange}
+                                />
+                            </div>
+                            <div className="mt3">
+                                <label className="db lh-copy f4" htmlFor="email-address">Email</label>
+                                <input 
+                                className="pa2 br3 input-reset ba bg-transparent hover-white w-100" 
+                                type="email" 
+                                name="email-address"  
+                                id="email-address" 
+                                onChange={this.onEmailChange}
+                                />
+                            </div>
+                            <div className="mv3">
+                                <label className="db lh-copy f4" htmlFor="password">Password</label>
+                                <input 
+                                className="b br3 pa2 input-reset ba bg-transparent hover-white w-100" 
+                                type="password" 
+                                name="password"  
+                                id="password" 
+                                onChange={this.onPasswordChange}
+                                />
+                            </div>
                         </fieldset>
-                        <div className="">
-                        <input 
-                            onClick={this.onSubmitSignIn}
-                            className="b br3 pointer ph3 pv2 input-reset ba bg-transparent grow pointer f5 dib" 
-                            style={{color: '#cacaca', borderColor: '#cacaca'}}
-                            type="submit" 
-                            value="Register"
-                            />
+                        <div>
+                            <input 
+                                onClick={this.onSubmitSignIn}
+                                className="b br3 pointer ph3 pv2 input-reset ba bg-transparent grow pointer f5 dib moon-gray" 
+                                type="submit" 
+                                value="Register"
+                                />
                         </div>
                     </div>
                 </main>

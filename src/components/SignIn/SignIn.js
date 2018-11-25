@@ -8,9 +8,11 @@ class SignIn extends React.Component {
             signInPassword: '',
         }
     }
+
     onEmailChange = (event) => {
         this.setState({signInEmail: event.target.value})
     }
+    
     onPasswordChange = (event) => {
         this.setState({signInPassword: event.target.value})
     }
@@ -38,17 +40,16 @@ class SignIn extends React.Component {
     render() {
         const { onRouteChange } = this.props;
         return (
-            <article className="br3 ba mv4 w-100 w-50-m w-25-l mw6 shadow-5 center" style={{color: '#cacaca'}}>
+            <article className="br3 ba mv4 w-100 w-50-m w-25-l mw6 shadow-5 center moon-gray b--moon-gray">
                 <main className="pa4">
                     <div className="measure">
                         <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                        <legend className="f1 ph0 mh0 center">Sign In</legend>
+                        <legend className="f1 ph0 mh0 center ">Sign In</legend>
                         <div className="mt3">
                             <label className="db lh-copy f4" htmlFor="email-address">Email</label>
                             <input 
                                 className="pa2 br3 input-reset ba bg-transparent hover-white w-100" 
                                 type="email" 
-                                style={{borderColor: '#cacaca'}}
                                 name="email-address"  
                                 id="email-address"
                                 onChange={this.onEmailChange}
@@ -59,7 +60,6 @@ class SignIn extends React.Component {
                             <input 
                                 className="pa2 br3 input-reset ba bg-transparent hover-white w-100" 
                                 type="password" 
-                                style={{borderColor: '#cacaca'}}
                                 name="password"  
                                 id="password"
                                 onChange={this.onPasswordChange}
@@ -69,8 +69,7 @@ class SignIn extends React.Component {
                         <div className="">
                         <input 
                             onClick={this.onSubmitSignIn}
-                            className="ph3 br3 pv2 input-reset ba bg-transparent grow pointer f4 dib"
-                            style={{color: '#cacaca', borderColor: '#cacaca'}}
+                            className="ph3 br3 pv2 input-reset ba bg-transparent grow pointer f4 dib moon-gray"
                             type="submit" 
                             value="Sign in"
                             />
@@ -81,7 +80,6 @@ class SignIn extends React.Component {
                     </div>
                 </main>
             </article>
-
         );
     }
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 import './ImageLinkForm.css';
 
-const ImageLinkForm = ({ onInputChange, onButtonSubmit, componentColors }) => {
+const ImageLinkForm = ({ onInputChange, onButtonSubmit}) => {
 	return (
-		<div style={{color: componentColors}}>
+		<div className="moon-gray b--moon-gray">
 			<p className='f3'>
 			{`Paste a photo's URL into the box below and I will detect if there's a face in it!`}
 			</p>
@@ -12,7 +12,7 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit, componentColors }) => {
 				<div className='form center pa4 br3 shadow-5'>
 					<input className='f3 pa2 w-70 center' type='text' onChange={onInputChange}/>
 					<button 
-					className='w-30 grow f3 link ph3 pv2 dib bg-orange'
+					className='w-30 grow f3 link ph3 pv2 dib bg-orange moon-gray'
 					style={{background: 'rgb(158, 62, 62) 50%'}}
 					onClick={onButtonSubmit}>Detect</button>
 				</div>
