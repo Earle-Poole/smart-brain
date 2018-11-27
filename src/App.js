@@ -16,9 +16,9 @@ import './App.css';
 ***Make the rank counter only increment upon finding a face
 ***Have the facerecognition component iterate over multiple faces
   being given back from Clarifai API
-DONE ***Add Social Media and contact information DONE
 ***Make page scroll down when detect button pressed
 ***Change register component font colors
+DONE ***Add Social Media and contact information DONE
 */
 
 const particlesOptions = {
@@ -188,7 +188,6 @@ class App extends Component {
           onButtonSubmit={this.onButtonSubmit}
           />
           <FaceRecognition box={box} imageUrl={imageUrl} />
-          {/* <SocialMediaTags componentColors={componentColors} /> */}
         </div>
           : (
             route === 'signin' 
