@@ -13,12 +13,12 @@ import './App.css';
 /* TO DO LIST
 ***Add additional APIs and the selecting drop-down box
   -Different handlings of outputs from different API calls
-***Make the rank counter only increment upon finding a face
 ***Have the facerecognition component iterate over multiple faces
   being given back from Clarifai API
 ***Make page scroll down when detect button pressed
-***Change register component font colors
-DONE ***Add Social Media and contact information DONE
+  DONE ***Change register component font colors DONE
+  DONE ***Add Social Media and contact information DONE
+  DONE ***Make the rank counter only increment upon finding a face DONE
 */
 
 const particlesOptions = {
@@ -82,7 +82,10 @@ const initialState = {
     entries: 0,
     joined: ''      
   },
-  componentColors: '#cacaca'
+  model: {
+    name: '',
+    accuracy: ''
+  } 
 }
 
 class App extends Component {
@@ -111,6 +114,15 @@ class App extends Component {
       topRow: clarifaiFace.top_row * height,
       rightCol: width - (clarifaiFace.right_col * width),
       bottomRow: height - (clarifaiFace.bottom_row * height),
+    }
+  }
+
+  interpretGeneralModelResponse = (data) => {
+    const clarifaiResponse = data.outputs[0].data.concepts;
+    this.setState({})
+    return {
+        name: clarifaiResponse.name,
+        accuracy: clarifaiResponse.value
     }
   }
 
