@@ -8,6 +8,7 @@ import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import SocialMediaTags from './components/SocialMediaTags/SocialMediaTags';
 import Particles from 'react-particles-js';
+import GeneralModel from './components/GeneralModel/GeneralModel';
 import './App.css';
 
 /* TO DO LIST
@@ -119,7 +120,10 @@ class App extends Component {
 
   interpretGeneralModelResponse = (data) => {
     const clarifaiResponse = data.outputs[0].data.concepts;
-    this.setState({})
+    this.setState({model: {
+      name: clarifaiResponse.name,
+      accuracy: clarifaiResponse.value
+    }})
     return {
         name: clarifaiResponse.name,
         accuracy: clarifaiResponse.value
@@ -162,6 +166,7 @@ class App extends Component {
             })
             .catch(console.log)
         this.displayFaceBox(this.calculateFaceLocation(response))
+        this.interpretGeneralModelResponse(response)
         }
       })
       .catch(err => console.log(err));
@@ -178,7 +183,7 @@ class App extends Component {
   }
 
   render() {
-    const { isSignedIn, imageUrl, route, box} = this.state;
+    const { isSignedIn, imageUrl, route, box, model } = this.state;
     return (
       <div className="App">
         <Particles className='particles'
@@ -200,6 +205,7 @@ class App extends Component {
           onButtonSubmit={this.onButtonSubmit}
           />
           <FaceRecognition box={box} imageUrl={imageUrl} />
+          <GeneralModel name={model.name} accuracy={model.value} />
         </div>
           : (
             route === 'signin' 
