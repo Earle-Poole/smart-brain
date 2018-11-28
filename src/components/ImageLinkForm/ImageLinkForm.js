@@ -4,7 +4,7 @@ import Scroll from 'react-scroll';
 
 var scroll = Scroll.animateScroll;
 
-const ImageLinkForm = ({ onInputChange, onButtonSubmit}) => {
+const ImageLinkForm = ({ onInputChange, onButtonSubmit, onButtonGMSubmit}) => {
 	return (
 		<div className="moon-gray b--moon-gray">
 			<p className='f3'>
@@ -18,7 +18,8 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit}) => {
 						className='w-30 grow f3 link ph3 pv2 dib bg-orange moon-gray'
 						style={{background: 'rgb(158, 62, 62) 50%'}}
 						onClick={() => {
-							onButtonSubmit();
+							// onButtonSubmit();
+							onButtonGMSubmit();
 							scroll.scrollToBottom();
 						}}
 						>Detect

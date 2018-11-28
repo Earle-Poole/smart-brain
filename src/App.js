@@ -119,7 +119,8 @@ class App extends Component {
   }
 
   interpretGeneralModelResponse = (data) => {
-    const clarifaiResponse = data.outputs[0].data.concepts;
+    console.log(data)
+    const clarifaiResponse = data.outputs[0].data.concepts[0];
     this.setState({model: {
       name: clarifaiResponse.name,
       accuracy: clarifaiResponse.value
@@ -166,6 +167,37 @@ class App extends Component {
             })
             .catch(console.log)
         this.displayFaceBox(this.calculateFaceLocation(response))
+        }
+      })
+      .catch(err => console.log(err));
+  }
+
+  onButtonGMSubmit = () => {
+    this.setState({
+      imageUrl: this.state.input
+    })
+      fetch('https://stormy-peak-63661.herokuapp.com/generalmodelurl', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            input: this.state.input
+        })
+      })
+      .then(response => response.json())
+      .then(response => {
+        if (response) {
+          fetch('https://stormy-peak-63661.herokuapp.com/image', {
+            method: 'put',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                id: this.state.user.id
+            })
+          })
+            .then(response => response.json())
+            .then(count => {
+              this.setState(Object.assign(this.state.user, { entries: count }))
+            })
+            .catch(console.log)
         this.interpretGeneralModelResponse(response)
         }
       })
@@ -203,9 +235,10 @@ class App extends Component {
           <ImageLinkForm 
           onInputChange={this.onInputChange} 
           onButtonSubmit={this.onButtonSubmit}
+          onButtonGMSubmit={this.onButtonGMSubmit}
           />
           <FaceRecognition box={box} imageUrl={imageUrl} />
-          <GeneralModel name={model.name} accuracy={model.value} />
+          <GeneralModel name={model.name} accuracy={model.accuracy} />
         </div>
           : (
             route === 'signin' 
@@ -215,7 +248,7 @@ class App extends Component {
             onRouteChange={this.onRouteChange}
             />
           )
-    }
+        }
       <SocialMediaTags />
       </div>
     );
