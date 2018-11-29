@@ -120,8 +120,11 @@ class App extends Component {
   }
 
   interpretGeneralModelResponse = (data) => {
-    console.log(data)
-    const clarifaiResponse = data.outputs[0].data.concepts[0];
+      if(data.outputs[0].data.concepts[0].name === "no person"){
+        var clarifaiResponse = data.outputs[0].data.concepts[1]
+      } else {
+        clarifaiResponse = data.outputs[0].data.concepts[0]
+      };
     return {
         name: clarifaiResponse.name,
         accuracy: (clarifaiResponse.value * 100),
