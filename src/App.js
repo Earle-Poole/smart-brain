@@ -84,8 +84,9 @@ const initialState = {
     joined: ''      
   },
   model: {
-    name: '',
-    accuracy: ''
+    name: "",
+    accuracy: 0,
+    displayNameAcc: false
   } 
 }
 
@@ -121,13 +122,10 @@ class App extends Component {
   interpretGeneralModelResponse = (data) => {
     console.log(data)
     const clarifaiResponse = data.outputs[0].data.concepts[0];
-    this.setState({model: {
-      name: clarifaiResponse.name,
-      accuracy: clarifaiResponse.value
-    }})
     return {
         name: clarifaiResponse.name,
-        accuracy: clarifaiResponse.value
+        accuracy: (clarifaiResponse.value * 100),
+        displayNameAcc: true
     }
   }
 
@@ -137,6 +135,10 @@ class App extends Component {
 
   onInputChange = (event) => {
     this.setState({input: event.target.value});
+  }
+
+  onDisplayNameAcc = (nameAcc) => {
+    this.setState({model: nameAcc})
   }
 
   onButtonSubmit = () => {
@@ -174,7 +176,8 @@ class App extends Component {
 
   onButtonGMSubmit = () => {
     this.setState({
-      imageUrl: this.state.input
+      imageUrl: this.state.input,
+      model: {displayNameAcc: false}
     })
       fetch('https://stormy-peak-63661.herokuapp.com/generalmodelurl', {
         method: 'post',
@@ -198,7 +201,7 @@ class App extends Component {
               this.setState(Object.assign(this.state.user, { entries: count }))
             })
             .catch(console.log)
-        this.interpretGeneralModelResponse(response)
+        this.onDisplayNameAcc(this.interpretGeneralModelResponse(response))
         }
       })
       .catch(err => console.log(err));
@@ -237,16 +240,28 @@ class App extends Component {
           onButtonSubmit={this.onButtonSubmit}
           onButtonGMSubmit={this.onButtonGMSubmit}
           />
-          <FaceRecognition box={box} imageUrl={imageUrl} />
-          <GeneralModel name={model.name} accuracy={model.accuracy} />
+          <FaceRecognition 
+          box={box} 
+          imageUrl={imageUrl} 
+          />
+          <GeneralModel 
+          name={model.name} 
+          accuracy={model.accuracy}
+          imageUrl={imageUrl}
+          displayNameAcc={model.displayNameAcc}
+          />
         </div>
           : (
             route === 'signin' 
-            ? <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-            : <Register 
+            ? <div>
+            <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+            </div>
+            : <div>
+            <Register 
             loadUser={this.loadUser} 
             onRouteChange={this.onRouteChange}
             />
+            </div>
           )
         }
       <SocialMediaTags />

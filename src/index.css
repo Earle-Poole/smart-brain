@@ -8,7 +8,9 @@ body {
     no-repeat center center fixed;
   background-repeat: initial;
   height: 100%;
-  width: 100%
+  width: 100%;
+  flex: 1;
+  justify-content: space-between
 }
 
 button{

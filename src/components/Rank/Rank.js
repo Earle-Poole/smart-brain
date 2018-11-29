@@ -5,7 +5,7 @@ const Rank = ({name, entries}) => {
 	return (
 		<div className='moon-gray'>
 			<div className='f3'>
-			{`Hello, ${name}, I am keeping track of how many faces you've had identified. You're at`}
+			{`Hello, ${name}, I am keeping track of how many photos you've had identified. You're at`}
 			</div>
 			<br/><br/>
 			<div className='f1'>
