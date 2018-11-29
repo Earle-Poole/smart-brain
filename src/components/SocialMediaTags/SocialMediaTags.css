@@ -1,11 +1,10 @@
-.Footer {
-    height: 70px;
-    position: unset;
-    bottom: 0;
-    padding: 10px 0;
+.sticky-footer {
+    bottom: 40px;
+    position: fixed;
+    display: flex;
+    height: 3rem;
     width: 100%;
-}
-
-.footer {
-    padding: inherit;
-}
+    z-index: 0;
+    padding-top: 2rem;
+  }
+  

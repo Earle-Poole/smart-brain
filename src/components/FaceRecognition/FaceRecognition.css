@@ -5,3 +5,7 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+img {
+    z-index: 0;
+}

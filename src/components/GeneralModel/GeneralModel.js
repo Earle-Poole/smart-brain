@@ -1,4 +1,5 @@
 import React from 'react';
+import './GeneralModel.css';
 
 const GeneralModel = ({ name, accuracy, imageUrl, displayNameAcc }) => {
     if (displayNameAcc){
