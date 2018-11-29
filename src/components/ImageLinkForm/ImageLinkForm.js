@@ -26,9 +26,6 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit, onButtonGMSubmit}) => {
 					</button>
 				</div>
 			</div>
-			<p className='f4'>
-			{`Soon I will be able to detect celebrities, food, and apparel!`}
-			</p>
 		</div>
 	);
 }

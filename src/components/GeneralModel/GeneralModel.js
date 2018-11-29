@@ -6,7 +6,7 @@ const GeneralModel = ({ name, accuracy, imageUrl, displayNameAcc }) => {
         return (
             <div className='center ma'>
                 <div className='absolute mt2 moon-gray ttc f2'>
-                <img id='inputimage' alt='' src={imageUrl} width='400px' height='auto' />
+                    <img id='inputimage' alt='' src={imageUrl} width='400px' height='auto' />
                     <p>
                         {`${name}, ${accuracy}%`}
                     </p>

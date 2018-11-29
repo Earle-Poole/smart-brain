@@ -1,4 +1,7 @@
-img, p {
+p {
     z-index: 0;
-    padding-bottom: 1rem;
+}
+
+#inputimage {
+    padding-top: 1.5rem;
 }
