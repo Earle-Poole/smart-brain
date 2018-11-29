@@ -1,6 +1,5 @@
 .Tilt {
 	background: linear-gradient(to bottom right, #DE6161 0%, rgb(158, 62, 62) 50%, #DE6161 100%);
-	opacity: 0.85;
 	display: flex;
 	align-items: center;
 	justify-content: center;

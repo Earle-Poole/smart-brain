@@ -49,10 +49,6 @@ const particlesOptions = {
       onhover: {
         enable: true,
         mode: "bubble"
-      },
-      onclick: {
-        enable: true,
-        mode: "repulse"
       }
     },
     modes: {
@@ -61,10 +57,6 @@ const particlesOptions = {
         duration: 2,
         size: 1,
         opacity: 0,
-      },
-      repulse: {
-        distance: 200,
-        duration: 1
       }
     }
   }
@@ -230,42 +222,42 @@ class App extends Component {
         <Navigation 
           isSignedIn={isSignedIn} 
           onRouteChange={this.onRouteChange}
-          />
+        />
         { route === 'home' 
           ? <div>
-          <Logo />
-          <Rank 
-          name={this.state.user.name} 
-          entries={this.state.user.entries}
-          />
-          <ImageLinkForm 
-          onInputChange={this.onInputChange} 
-          onButtonSubmit={this.onButtonSubmit}
-          onButtonGMSubmit={this.onButtonGMSubmit}
-          />
-          <FaceRecognition 
-          box={box} 
-          imageUrl={imageUrl} 
-          />
-          <GeneralModel 
-          name={model.name} 
-          accuracy={model.accuracy}
-          imageUrl={imageUrl}
-          displayNameAcc={model.displayNameAcc}
-          />
-        </div>
+            <Logo />
+            <Rank 
+            name={this.state.user.name} 
+            entries={this.state.user.entries}
+            />
+            <ImageLinkForm 
+            onInputChange={this.onInputChange} 
+            onButtonSubmit={this.onButtonSubmit}
+            onButtonGMSubmit={this.onButtonGMSubmit}
+            />
+            <FaceRecognition 
+            box={box} 
+            imageUrl={imageUrl} 
+            />
+            <GeneralModel 
+            name={model.name} 
+            accuracy={model.accuracy}
+            imageUrl={imageUrl}
+            displayNameAcc={model.displayNameAcc}
+            />
+            </div>
           : (
             route === 'signin' 
             ? <div>
-            <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-            </div>
+              <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+              </div>
             : <div>
-            <Register 
-            loadUser={this.loadUser} 
-            onRouteChange={this.onRouteChange}
-            />
-            </div>
-          )
+              <Register 
+              loadUser={this.loadUser} 
+              onRouteChange={this.onRouteChange}
+              />
+              </div>
+            )
         }
       <SocialMediaTags />
       </div>

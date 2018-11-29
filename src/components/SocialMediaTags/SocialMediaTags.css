@@ -7,3 +7,6 @@
     z-index: 0;
   }
   
+  .redBackground {
+    background: rgb(158, 62, 62)
+  }

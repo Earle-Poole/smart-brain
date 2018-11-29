@@ -48,7 +48,7 @@ class SignIn extends React.Component {
                         <div className="mt3">
                             <label className="db lh-copy f4" htmlFor="email-address">Email</label>
                             <input 
-                                className="pa2 br3 input-reset ba bg-transparent hover-white w-100" 
+                                className="pa2 br3 input-reset ba b--moon-gray moon-gray bg-transparent w-100" 
                                 type="email" 
                                 name="email-address"  
                                 id="email-address"
@@ -58,11 +58,12 @@ class SignIn extends React.Component {
                         <div className="mv3">
                             <label className="db lh-copy f4" htmlFor="password">Password</label>
                             <input 
-                                className="pa2 br3 input-reset ba bg-transparent hover-white w-100" 
+                                className="pa2 br3 input-reset ba b--moon-gray moon-gray bg-transparent w-100" 
                                 type="password" 
                                 name="password"  
                                 id="password"
                                 onChange={this.onPasswordChange}
+                                onSubmit={this.onSubmitSignIn}
                                 />
                         </div>
                         </fieldset>
@@ -75,7 +76,7 @@ class SignIn extends React.Component {
                             />
                         </div>
                         <div className="lh-copy mt3">
-                        <p onClick={() => onRouteChange('register')} className="f4 pointer link dim db">Register</p>
+                        <p onClick={() => onRouteChange('register')} className="f4 pointer link grow db">Register</p>
                         </div>
                     </div>
                 </main>
