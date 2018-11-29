@@ -8,7 +8,7 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit, onButtonGMSubmit}) => {
 	return (
 		<div className="moon-gray b--moon-gray">
 			<p className='f3'>
-			{`Paste a photo's URL into the box below and I will detect if there's a face in it!`}
+			{`Paste a photo's URL into the box below and I will do my best to see what's in it!`}
 			</p>
 			<br/>
 			<div className='center'>
