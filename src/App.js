@@ -127,7 +127,7 @@ class App extends Component {
       };
     return {
         name: clarifaiResponse.name,
-        accuracy: (clarifaiResponse.value * 100),
+        accuracy: (clarifaiResponse.value * 100).toFixed(2),
         displayNameAcc: true
     }
   }
