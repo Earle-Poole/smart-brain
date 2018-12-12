@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navigation from './components/Navigation/Navigation';
-import FaceRecognition from './components/FaceRecognition/FaceRecognition';
+// import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import Logo from './components/Logo/Logo';
 import SignIn from './components/SignIn/SignIn';
 import Register from './components/Register/Register';
@@ -15,8 +15,8 @@ import './App.css';
 ***Add additional APIs and the selecting drop-down box
   -Different handlings of outputs from different API calls
 ***Have the facerecognition component iterate over multiple faces
-  being given back from Clarifai API
-***Make page scroll down when detect button pressed
+    being given back from Clarifai API
+  DONE ***Make page scroll down when detect button pressed DONE
   DONE ***Change register component font colors DONE
   DONE ***Add Social Media and contact information DONE
   DONE ***Make the rank counter only increment upon finding a face DONE
@@ -76,8 +76,8 @@ const initialState = {
     joined: ''      
   },
   model: {
-    name: "",
-    accuracy: 0,
+    name: [],
+    accuracy: [],
     displayNameAcc: false
   } 
 }
@@ -112,15 +112,20 @@ class App extends Component {
   }
 
   interpretGeneralModelResponse = (data) => {
-      if(data.outputs[0].data.concepts[0].name === "no person"){
-        var clarifaiResponse = data.outputs[0].data.concepts[1]
-      } else {
-        clarifaiResponse = data.outputs[0].data.concepts[0]
-      };
+      // if(data.outputs[0].data.concepts[0].name === "no person"){
+    var name = [];
+    var accuracy = [];
+    var clarifaiResponse = data.outputs[0].data.concepts
+
+    for(let i = 0; i < 3; i++){
+      name.push(clarifaiResponse[i].name);
+      accuracy.push((clarifaiResponse[i].value * 100).toFixed(2));
+    }
+
     return {
-        name: clarifaiResponse.name,
-        accuracy: (clarifaiResponse.value * 100).toFixed(2),
-        displayNameAcc: true
+      name,
+      accuracy,
+      displayNameAcc: true
     }
   }
 
@@ -172,7 +177,7 @@ class App extends Component {
   onButtonGMSubmit = () => {
     this.setState({
       imageUrl: this.state.input,
-      model: {displayNameAcc: false}
+      model: {displayNameAcc: false, name: [], accuracy: []}
     })
       fetch('https://stormy-peak-63661.herokuapp.com/generalmodelurl', {
         method: 'post',
@@ -199,7 +204,7 @@ class App extends Component {
         this.onDisplayNameAcc(this.interpretGeneralModelResponse(response))
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log('Sorry, I could not recognize this image. \n', err));
   }
 
   onRouteChange = (route) => {
@@ -235,10 +240,10 @@ class App extends Component {
             onButtonSubmit={this.onButtonSubmit}
             onButtonGMSubmit={this.onButtonGMSubmit}
             />
-            <FaceRecognition 
+            {/* <FaceRecognition 
             box={box} 
             imageUrl={imageUrl} 
-            />
+            /> */}
             <GeneralModel 
             name={model.name} 
             accuracy={model.accuracy}
@@ -249,7 +254,9 @@ class App extends Component {
           : (
             route === 'signin' 
             ? <div>
-              <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+              <SignIn 
+              loadUser={this.loadUser} 
+              onRouteChange={this.onRouteChange}/>
               </div>
             : <div>
               <Register 
