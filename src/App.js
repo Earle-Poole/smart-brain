@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navigation from './components/Navigation/Navigation';
-// import FaceRecognition from './components/FaceRecognition/FaceRecognition';
+import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import Logo from './components/Logo/Logo';
 import SignIn from './components/SignIn/SignIn';
 import Register from './components/Register/Register';
@@ -12,14 +12,14 @@ import GeneralModel from './components/GeneralModel/GeneralModel';
 import './App.css';
 
 /* TO DO LIST
-***Add additional APIs and the selecting drop-down box
-  -Different handlings of outputs from different API calls
+  DONE ***Add additional APIs and the selecting drop-down box DONE
 ***Have the facerecognition component iterate over multiple faces
     being given back from Clarifai API
   DONE ***Make page scroll down when detect button pressed DONE
   DONE ***Change register component font colors DONE
   DONE ***Add Social Media and contact information DONE
   DONE ***Make the rank counter only increment upon finding a face DONE
+  DONE ***Make General Model give back top 3 responses DONE
 */
 
 const particlesOptions = {
@@ -112,12 +112,11 @@ class App extends Component {
   }
 
   interpretGeneralModelResponse = (data) => {
-      // if(data.outputs[0].data.concepts[0].name === "no person"){
     var name = [];
     var accuracy = [];
     var clarifaiResponse = data.outputs[0].data.concepts
 
-    for(let i = 0; i < 3; i++){
+    for(let i = 0; i < 4; i++){
       name.push(clarifaiResponse[i].name);
       accuracy.push((clarifaiResponse[i].value * 100).toFixed(2));
     }
@@ -142,8 +141,17 @@ class App extends Component {
   }
 
   onButtonSubmit = () => {
+    if(document.getElementById('generalModel').selected){
+      this.onButtonGMSubmit();
+    } else if (document.getElementById('faceDetection').selected){
+      this.onButtonFDSubmit();
+    }
+  }
+
+  onButtonFDSubmit = () => {
     this.setState({
       imageUrl: this.state.input,
+      model: {displayNameAcc: false, name: [], accuracy: []},
       box: {}
     });
       fetch('https://stormy-peak-63661.herokuapp.com/imageurl', {
@@ -177,7 +185,8 @@ class App extends Component {
   onButtonGMSubmit = () => {
     this.setState({
       imageUrl: this.state.input,
-      model: {displayNameAcc: false, name: [], accuracy: []}
+      model: {displayNameAcc: false, name: [], accuracy: []},
+      box: {}
     })
       fetch('https://stormy-peak-63661.herokuapp.com/generalmodelurl', {
         method: 'post',
@@ -238,12 +247,11 @@ class App extends Component {
             <ImageLinkForm 
             onInputChange={this.onInputChange} 
             onButtonSubmit={this.onButtonSubmit}
-            onButtonGMSubmit={this.onButtonGMSubmit}
             />
-            {/* <FaceRecognition 
+            <FaceRecognition 
             box={box} 
             imageUrl={imageUrl} 
-            /> */}
+            />
             <GeneralModel 
             name={model.name} 
             accuracy={model.accuracy}
