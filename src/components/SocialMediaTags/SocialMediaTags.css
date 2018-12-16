@@ -1,10 +1,9 @@
 .sticky-footer {
     bottom: 85px;
-    position: fixed;
     display: flex;
     height: 0rem;
     width: 100%;
-    z-index: -0.5;
+    z-index: 0;
   }
   
   .redBackground {

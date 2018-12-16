@@ -134,7 +134,7 @@ class App extends Component {
     var name = [];
     var accuracy = [];
     var clarifaiResponse = data.outputs[0].data.concepts
-    
+
     for(let i = 0; i < 5; i++){
       name.push(clarifaiResponse[i].name);
       accuracy.push((clarifaiResponse[i].value * 100).toFixed(2));
@@ -158,8 +158,6 @@ class App extends Component {
   onDisplayNameAcc = (nameAcc) => {
     this.setState({model: nameAcc})
   }
-
-
 
   onButtonSubmit = () => {
     if(document.getElementById('generalModel').selected){
