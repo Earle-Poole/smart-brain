@@ -9,9 +9,9 @@ import Rank from './components/Rank/Rank';
 import SocialMediaTags from './components/SocialMediaTags/SocialMediaTags';
 import Particles from 'react-particles-js';
 import GeneralModel from './components/GeneralModel/GeneralModel';
-// import FoodDetection from './components/FoodDetection/FoodDetection.js';
-import './App.css';
 import FoodDetection from './components/FoodDetection/FoodDetection';
+import CelebDetection from './components/CelebDetection/CelebDetection';
+import './App.css';
 
 /* TO DO LIST
   DONE ***Add additional APIs and the selecting drop-down box DONE
@@ -147,6 +147,21 @@ class App extends Component {
     }
   }
 
+  interpretCelebModelResponse = (data) => {
+    var name = [];
+    var accuracy = [];
+    var clarifaiResponse = data.outputs[0].data.regions[0].data.face.identity.concepts[0]
+
+    name.push(clarifaiResponse.name);
+    accuracy.push((clarifaiResponse.value * 100).toFixed(2));
+
+    return {
+      name,
+      accuracy,
+      displayNameAcc: 3
+    }
+  }
+
   displayFaceBox = (box) => {
     this.setState({box: box})
   }
@@ -166,6 +181,8 @@ class App extends Component {
       this.onButtonFDSubmit();
     } else if (document.getElementById('foodDetection').selected){
       this.onButtonFoodDSubmit();
+    } else if (document.getElementById('celebDetection').selected){
+      this.onButtonCDSubmit();
     }
   }
 
@@ -271,6 +288,41 @@ class App extends Component {
       .catch(err => console.log('Sorry, I could not recognize this image. \n', err));
   }
 
+  onButtonCDSubmit = () => {
+    this.setState({
+      imageUrl: this.state.input,
+      model: {displayNameAcc: 0, name: [], accuracy: []},
+      box: {}
+    })
+      fetch('https://stormy-peak-63661.herokuapp.com/celebdetectionurl', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            input: this.state.input
+        })
+      })
+      .then(response => response.json())
+      .then(response => {
+        if (response) {
+          fetch('https://stormy-peak-63661.herokuapp.com/image', {
+            method: 'put',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                id: this.state.user.id
+            })
+          })
+            .then(response => response.json())
+            .then(count => {
+              this.setState(Object.assign(this.state.user, { entries: count }))
+            })
+            .catch(console.log)
+        this.onDisplayNameAcc(this.interpretCelebModelResponse(response))
+        }
+      })
+      .catch(err => console.log('Sorry, I could not recognize this image. \n', err));
+  }
+
+
   onRouteChange = (route) => {
     if(route === 'signout'){
         this.setState(initialState)
@@ -314,6 +366,12 @@ class App extends Component {
             displayNameAcc={model.displayNameAcc}
             />
             <FoodDetection
+            name={model.name}
+            accuracy={model.accuracy}
+            imageUrl={imageUrl}
+            displayNameAcc={model.displayNameAcc}
+            />
+            <CelebDetection
             name={model.name}
             accuracy={model.accuracy}
             imageUrl={imageUrl}
