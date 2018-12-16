@@ -16,6 +16,7 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit}) => {
 					<select>
 						<option id="generalModel">General Model</option>
 						<option id="faceDetection">Face Detection</option>
+						<option id="foodDetection">Food Detection</option>
 					</select>
 					<input className='f3 pa2 w-70 center' type='text' onChange={onInputChange}/>
 					<button 
