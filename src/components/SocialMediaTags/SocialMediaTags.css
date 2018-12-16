@@ -1,6 +1,7 @@
 .sticky-footer {
     bottom: 85px;
     display: flex;
+    position: fixed;
     height: 0rem;
     width: 100%;
     z-index: 0;
