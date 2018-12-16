@@ -1,7 +1,9 @@
 p {
     z-index: 1;
+    position: relative;
 }
 
 #inputimage {
     padding-top: 0.5rem;
+    z-index: 1;
 }

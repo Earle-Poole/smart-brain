@@ -170,7 +170,7 @@ class App extends Component {
     this.setState({input: event.target.value});
   }
 
-  onDisplayNameAcc = (nameAcc) => {
+  onDisplayNameAcc = (nameAcc) => { 
     this.setState({model: nameAcc})
   }
 
