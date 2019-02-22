@@ -13,17 +13,6 @@ import FoodDetection from './components/FoodDetection/FoodDetection';
 import CelebDetection from './components/CelebDetection/CelebDetection';
 import './App.css';
 
-/* TO DO LIST
-  DONE ***Add additional APIs and the selecting drop-down box DONE
-***Have the facerecognition component iterate over multiple faces
-    being given back from Clarifai API
-  DONE ***Make page scroll down when detect button pressed DONE
-  DONE ***Change register component font colors DONE
-  DONE ***Add Social Media and contact information DONE
-  DONE ***Make the rank counter only increment upon finding a face DONE
-  DONE ***Make General Model give back top 3 responses DONE
-*/
-
 const particlesOptions = {
   particles: {
     color:{
